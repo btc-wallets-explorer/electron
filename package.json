@@ -1,0 +1,32 @@
+{
+  "build": {
+    "appId": "btc-wallet-explorer"
+  },
+  "name": "btc-wallet-explorer-electron",
+  "version": "0.0.1",
+  "description": "A tool to analyse identity correlations between different wallets.",
+  "main": "src/main.js",
+  "scripts": {
+    "install": "npm install --prefix backend && npm install --prefix frontend",
+    "build": "npm run install && npm run build --prefix frontend",
+    "start": "electron src/main.js",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider electron-webpack dev",
+    "compile": "cp frontend/dist/* static && NODE_OPTIONS=--openssl-legacy-provider electron-webpack",
+    "dist": "npm run compile && electron-builder",
+    "dist:dir": "npm run dist -- --dir -c.compression=store -c.mac.identity=null"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "backend": "./backend",
+    "source-map-support": "^0.5.21"
+  },
+  "devDependencies": {
+    "electron": "^22.1.0",
+    "electron-builder": "^22.10.3",
+    "electron-webpack": "^2.8.2",
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
