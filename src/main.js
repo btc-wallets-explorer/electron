@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
 const backend = require('backend');
 
 console.log('electron version started');
@@ -15,7 +14,7 @@ const getStaticPath = () => {
 };
 
 const startApp = async () => {
-  await backend.startServer(settingsFile, walletsFile);
+  await backend.startServer(settingsFile, walletsFile, getStaticPath());
 
   const createWindow = () => {
     const win = new BrowserWindow({
@@ -23,9 +22,7 @@ const startApp = async () => {
       height: 600,
     });
 
-    const p = path.join(getStaticPath(), '/index.html');
-    console.log(p);
-    win.loadFile(p);
+    win.loadURL('http://localhost:8080/');
   };
 
   app.whenReady().then(() => {
