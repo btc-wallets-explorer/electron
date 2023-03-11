@@ -16,7 +16,7 @@
     "dist:dir": "npm run dist -- --dir -c.compression=store -c.mac.identity=null"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "backend": "./backend",
     "source-map-support": "^0.5.21"
